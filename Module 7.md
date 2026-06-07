@@ -186,16 +186,81 @@ Algorithm:
 13.End the program by returning 0.
 
 Program:
+#include <stdio.h>
+#include <stdlib.h>
 
-//type your code here
+// Structure to hold subject details
+struct Subject {
+    char name[50];
+    int marks;
+};
+
+int main() {
+    int n;
+    struct Subject *s;
+
+    // 1 & 2. Input and read the number of subjects
+    printf("Enter the number of subjects: ");
+    if (scanf("%d", &n) != 1 || n <= 0) {
+        printf("Invalid number of subjects.\n");
+        return 1;
+    }
+
+    // 3 & 4. Dynamically allocate memory using malloc
+    s = (struct Subject *)malloc(n * sizeof(struct Subject));
+
+    // 5. If memory allocation fails, display an error message and exit
+    if (s == NULL) {
+        printf("Memory allocation failed!\n");
+        return 1;
+    }
+
+    // 6 & 7. Input the details of each subject using a for loop
+    for (int i = 0; i < n; i++) {
+        printf("\nEnter details for Subject %d:\n", i + 1);
+        printf("Enter subject name: ");
+        scanf("%s", s[i].name);
+        printf("Enter marks: ");
+        scanf("%d", &s[i].marks);
+    }
+
+    // 8 & 9. Display the details of each subject using another for loop
+    printf("\n--- Subject Details ---\n");
+    for (int i = 0; i < n; i++) {
+        printf("Subject: %s | Marks: %d\n", s[i].name, s[i].marks);
+    }
+
+    // 10 & 11. Free the allocated memory
+    free(s);
+
+    // 12 & 13. End the program by returning 0
+    return 0;
+}
 
 
 
 
 Output:
+Enter the number of subjects: 3
+
+Enter details for Subject 1:
+Enter subject name: Mathematics
+Enter marks: 95
+
+Enter details for Subject 2:
+Enter subject name: Physics
+Enter marks: 88
+
+Enter details for Subject 3:
+Enter subject name: Chemistry
+Enter marks: 91
+
+--- Subject Details ---
+Subject: Mathematics | Marks: 95
+Subject: Physics | Marks: 88
+Subject: Chemistry | Marks: 91
 
 
-//paste your output here
 
 
 
